@@ -11,11 +11,11 @@ def make_character_n_gram(sequence,word_count):
     try:
         if  type(sequence) is str:
             # 文字列の与え方は考慮しない
-            n_gram = [sequence[index:index+word_count] for index in range(len(sequence)) ]
+            n_gram = [sequence[index:index+word_count] for index in range(len(sequence)) if index+word_count <= len(sequence) ]
 
         elif type(sequence) is list:
             sequence_str = ''.join(sequence)
-            n_gram = [sequence_str[index:index+word_count] for index in range(len(sequence_str)) ]
+            n_gram = [sequence_str[index:index+word_count] for index in range(len(sequence_str)) if index+word_count <= len(sequence_str) ]
 
         else:
             raise argument_error
@@ -34,10 +34,10 @@ def make_word_n_gram(sequence,word_count):
             print(sequence)
             sequence_arr = sequence.split()
             print(sequence_arr)
-            n_gram = [''.join(sequence_arr[index:index+word_count]) for index,word in enumerate(sequence_arr) ]
+            n_gram = [''.join(sequence_arr[index:index+word_count]) for index,word in enumerate(sequence_arr) if index+word_count <= len(sequence_arr) ]
 
         elif type(sequence) is list:
-            n_gram = [''.join(sequence[index:index+word_count]) for index,word in enumerate(sequence) ]
+            n_gram = [''.join(sequence[index:index+word_count]) for index,word in enumerate(sequence) if index+word_count <= len(sequence) ]
 
         else:
             raise argument_error
